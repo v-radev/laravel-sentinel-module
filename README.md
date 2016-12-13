@@ -1,5 +1,5 @@
 # Laravel Sentinel Module
-This is a Laravel module which helps you to track the user logins and user actions. You can the routes that the user visited and set some which to be ignored from the log. There are pages on which you can preview the user logins and user visits. There is also a display of all the application routes with middlewares attached to them. With this module you can also log messages into different files and check the last logged messages from the web browser in a page. For more information read the INFO file. Don't forget to check config/sentinel.php and configure the module.
+This is a Laravel module which helps you to track the user logins and user actions. You can check the routes that the user visited and set some which to be ignored from the log. There are pages on which you can preview the user logins and user visits. There is also a display of all the application routes with middlewares attached to them. With this module you can also log messages into different files and check the last logged messages from the web browser in a page. For more information read the INFO file. Don't forget to check config/sentinel.php and configure the module.
 
 ### Requirements:
 ```
