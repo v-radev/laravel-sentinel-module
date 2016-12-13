@@ -1,0 +1,33 @@
+
+INSTALLATION
+1. php artisan migrate --path=/app/Clusters/SentinelCluster/Resources/Database/migrations
+2. In app.php register the provider App\Clusters\SentinelCluster\Providers\SentinelClusterServiceProvider::class
+3. In app.php add alias 'Tell' => App\Clusters\SentinelCluster\Facades\Tell::class,
+4. php artisan vendor:publish --tag=sentinel
+5. In App\Http\Kernel add \App\Clusters\SentinelCluster\Middleware\RouteObserverMiddleware::class to the $middlewareGroups property on the array with the 'web' key
+! When tables get big run `php artisan clean:routelogs` and `php artisan clean:loginlogs` and to clean the DB records older than 30 days
+
+
+WHAT
+ = Users
+  1. I see when users logged in and logged out
+    - I see their IP, browser, etc.
+    #Route: dashboard/loginlogs
+  2. I see which routes they visited
+    - I am able to set some routes which would be ignored from this
+    #Route: dashboard/routelogs
+
+ = Routes
+  1. I see all routes and what middleware are attached to them
+   #Route: dashboard/routesinfo
+
+ = Logs
+  1. In the code I am able to log messages in different files
+  #Example usage:
+    \Tell::deleting('Record with ID X was deleted by John Doe.');
+    \Tell::warningDeleting('Record with ID X was deleted by John Doe.');
+    \Tell::alertDeleting('Record with ID X was deleted by John Doe.');
+    \Tell::payment('User with ID X sent a payment of N dollars.');
+    \Tell::infoPayment('User with ID X sent a payment of N dollars.');
+    \Tell::noticePayment('User with ID X sent a payment of N dollars.');
+  #Route: dashboard/filelogs
